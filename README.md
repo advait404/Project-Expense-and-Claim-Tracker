@@ -12,7 +12,7 @@ NOTE: The frontend currently does not support HTTPS. Web browsers may give a war
 
 WARNING: The Repository does not contain a valid OpenAI API key in the .env file. Please ask the developer for the keys or bring your own keys.
 
----
+
 
 ## Overview
 
@@ -26,7 +26,7 @@ The app is built around three interconnected concepts:
 
 Designed for Malaysian users (MYR denomination), but can be extended to other currencies and banking systems.
 
----
+
 
 ## Features
 
@@ -44,7 +44,7 @@ Designed for Malaysian users (MYR denomination), but can be extended to other cu
 ✅ Testing, docs & quality - Backend automated tests, detailed code comments, comprehensive documentation, and adherence to software engineering best practices.
 ✅ Privacy & security considerations - Design includes privacy and security measures (data handling and secure storage practices) and clear user warnings where appropriate.
 
----
+
 
 ## Tech Stack
 
@@ -70,7 +70,7 @@ Designed for Malaysian users (MYR denomination), but can be extended to other cu
 - **Pydantic** - Data validation and serialization
 - **Loguru** - Structured logging with context tracking
 
----
+
 
 ## Frontend Overview
 
@@ -217,7 +217,7 @@ erDiagram
   - `uploaded_at`: ISO 8601 timestamp of upload
   - `filename`: Original filename
 
----
+
 
 ## PDF Ingestion Pipeline
 
@@ -249,7 +249,7 @@ The pipeline applies these critical rules when parsing Malaysian bank statements
 - **Date Field Priority**: The transaction date is the primary date value; post date is stored only if it is found in the statement.
 - **0 MYR Transaction Excluded**: Transaction where there is no money transfer is excluded.
 
----
+
 
 ## Design Decisions
 
@@ -273,14 +273,14 @@ Staging extracted transactions in memory before persisting protects against part
 
 All uploaded and generated files are removed promptly for privacy and best practices: PNGs are cleaned up immediately using a context manager with delete=True, and PDFs are stored in the system temporary directly and deleted upon use.
 
----
+
 
 ## API Reference
 
 ### Projects
 
 | Method | Endpoint                               | Description               | Response       |
-| ------ | -------------------------------------- | ------------------------- | -------------- |
+|  | -- | - | -- |
 | POST   | `/api/projects`                      | Create a new project      | 201 Created    |
 | GET    | `/api/projects`                      | List all projects         | 200 OK (array) |
 | GET    | `/api/projects/{project_id}`         | Get project details       | 200 OK         |
@@ -291,7 +291,7 @@ All uploaded and generated files are removed promptly for privacy and best pract
 ### Expenses
 
 | Method | Endpoint                             | Description                           | Response       |
-| ------ | ------------------------------------ | ------------------------------------- | -------------- |
+|  |  | - | -- |
 | POST   | `/api/expenses`                    | Create expense                        | 201 Created    |
 | GET    | `/api/expenses`                    | List expenses                         | 200 OK (array) |
 | PUT    | `/api/expenses/{expense_id}`       | Update expense                        | 200 OK         |
@@ -301,7 +301,7 @@ All uploaded and generated files are removed promptly for privacy and best pract
 ### Income
 
 | Method | Endpoint                    | Description                         | Response       |
-| ------ | --------------------------- | ----------------------------------- | -------------- |
+|  |  | -- | -- |
 | POST   | `/api/income`             | Create income                       | 201 Created    |
 | GET    | `/api/income`             | List income (filterable by project) | 200 OK (array) |
 | PUT    | `/api/income/{income_id}` | Update income                       | 200 OK         |
@@ -310,7 +310,7 @@ All uploaded and generated files are removed promptly for privacy and best pract
 ### PDF Import
 
 | Method | Endpoint                        | Description                         | Response    |
-| ------ | ------------------------------- | ----------------------------------- | ----------- |
+|  | - | -- | -- |
 | POST   | `/api/pdf/upload`             | Upload PDF for async processing     | 200 OK      |
 | GET    | `/api/pdf/status/{upload_id}` | Check job status & retrieve results | 200 OK      |
 | POST   | `/api/pdf/confirm`            | Persist extracted transactions      | 201 Created |
@@ -318,7 +318,7 @@ All uploaded and generated files are removed promptly for privacy and best pract
 ### Error Codes
 
 | Code          | Meaning              | Common Causes                                   |
-| ------------- | -------------------- | ----------------------------------------------- |
+| - | -- | -- |
 | **400** | Bad Request          | Malformed JSON, missing required fields         |
 | **404** | Not Found            | Resource does not exist                         |
 | **413** | Payload Too Large    | PDF exceeds 50MB limit                          |
@@ -327,7 +327,7 @@ All uploaded and generated files are removed promptly for privacy and best pract
 
 All validation errors include a `detail` field with field-level error messages.
 
----
+
 
 ## Setup & Installation
 
@@ -384,7 +384,7 @@ The application is deployed on Google Compute Engine as a single VM instance.
 All configuration constants are centralized in `backend/common_constants.py`. Some of the important ones are mentioned below:
 
 | Constant                           | Default Value               | Purpose                                 |
-| ---------------------------------- | --------------------------- | --------------------------------------- |
+| - |  |  |
 | `OPENAI_MODEL`                   | `gpt-5.4-mini`              | Vision model for transaction extraction |
 | `OPENAI_MAX_OUTPUT_TOKENS`       | 6000                        | Max tokens per OpenAI response          |
 | `DATABASE_URL`                   | `sqlite:///./projects.db`   | SQLite database file path               |
@@ -396,7 +396,7 @@ All configuration constants are centralized in `backend/common_constants.py`. So
 
 Override any constant by setting a corresponding environment variable (e.g., `OPENAI_MODEL=gpt-4-turbo`).
 
----
+
 
 ## Error Handling
 
@@ -426,7 +426,7 @@ The Tracker uses a two-layer error handling approach:
 
 All error responses include an HTTP status code and a human-readable `detail` message. See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for the full error handling architecture and implementation details.
 
----
+
 
 ## Future Improvements
 
