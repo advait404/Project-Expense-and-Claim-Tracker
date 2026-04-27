@@ -1,0 +1,26 @@
+[project]
+name = "portman-project"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.104.0",
+    "uvicorn>=0.24.0",
+    "sqlalchemy>=2.0.0",
+    "openai>=2.32.0",
+    "pandas>=3.0.2",
+    "pdf2image>=1.17.0",
+    "pillow>=12.2.0",
+    "python-dotenv>=1.2.2",
+    "streamlit>=1.56.0",
+    "python-multipart>=0.0.26",
+    "loguru>=0.7.3",
+    "yfinance>=1.3.0",
+    "pdfminer.six>=20221105",
+]
+
+[dependency-groups]
+dev = [
+    "httpx>=0.28.1",
+    "pytest>=9.0.3",
+    "pytest-asyncio>=1.3.0",
+]

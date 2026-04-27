@@ -1,0 +1,48 @@
+"""Common constants for the expense tracking system."""
+
+# OpenAI / API Configuration
+OPENAI_MODEL = "gpt-5.4-mini"
+OPENAI_MAX_OUTPUT_TOKENS = 6000
+OPENAI_API_KEY_ENV_VAR = "OPENAI_API_KEY"
+
+# Database Configuration
+DATABASE_URL = "sqlite:///./projects.db"
+
+# Server Configuration
+THREAD_POOL_MAX_WORKERS = 4
+API_ROUTER_PREFIX = "/api"
+CORS_ALLOW_ORIGINS = ["*"]
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_METHODS = ["*"]
+CORS_ALLOW_HEADERS = ["*"]
+
+# File Upload Configuration
+MAX_PDF_FILE_SIZE = 50 * 1024 * 1024  # 50MB
+
+# Project Validation Constants
+VALID_PROJECT_STATUSES = {"active", "on_hold", "closed", "archived"}
+PROJECT_NAME_MAX_LENGTH = 255
+PROJECT_DESCRIPTION_MAX_LENGTH = 1000
+
+# Income Validation Constants
+INCOME_SOURCE_MAX_LENGTH = 255
+CURRENCY_CODE_MAX_LENGTH = 10
+
+# Expense Validation Constants
+VALID_EXPENSE_SOURCES = {"manual", "pdf"}
+EXPENSE_VENDOR_MAX_LENGTH = 255
+EXPENSE_DESCRIPTION_MAX_LENGTH = 1000
+EXPENSE_CATEGORY_MAX_LENGTH = 100
+EXPENSE_NOTES_MAX_LENGTH = 1000
+PDF_VENDOR_TRUNCATION_LENGTH = 100
+
+# Currency & Transaction Defaults
+DEFAULT_CURRENCY = "MYR"
+DEFAULT_CATEGORY_SUGGESTION = "Other"
+DEFAULT_CURRENCY_CONVERSION_TYPE = "native"
+BANK_CONVERSION_TYPE = "converted_by_bank"
+
+# PDF Processing
+PDF_UNICODE_NORMALIZATION_FORM = "NFKC"
+PDF_WHITESPACE_PATTERN = r"\s+"
+PDF_TEXT_EXTRACTION_HASH_ALGORITHM = "sha256"
