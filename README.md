@@ -279,45 +279,45 @@ All uploaded and generated files are removed promptly for privacy and best pract
 
 ### Projects
 
-| Method | Endpoint                               | Description               | Response       |
+| Method | Endpoint                               | Description             | 
 |  | -- | - | -- |
-| POST   | `/api/projects`                      | Create a new project      | 201 Created    |
-| GET    | `/api/projects`                      | List all projects         | 200 OK (array) |
-| GET    | `/api/projects/{project_id}`         | Get project details       | 200 OK         |
-| PUT    | `/api/projects/{project_id}`         | Update project            | 200 OK         |
-| DELETE | `/api/projects/{project_id}`         | Delete project (cascades) | 200 OK         |
-| GET    | `/api/projects/summary`              | Get financial summary     | 200 OK         |
+| POST   | `/api/projects`                      | Create a new project      | 
+| GET    | `/api/projects`                      | List all projects         | 
+| GET    | `/api/projects/{project_id}`         | Get project details       | 
+| PUT    | `/api/projects/{project_id}`         | Update project            | 
+| DELETE | `/api/projects/{project_id}`         | Delete project (cascades) | 
+| GET    | `/api/projects/summary`              | Get financial summary     | 
 
 ### Expenses
 
-| Method | Endpoint                             | Description                           | Response       |
+| Method | Endpoint                             | Description                         | 
 |  |  | - | -- |
-| POST   | `/api/expenses`                    | Create expense                        | 201 Created    |
-| GET    | `/api/expenses`                    | List expenses                         | 200 OK (array) |
-| PUT    | `/api/expenses/{expense_id}`       | Update expense                        | 200 OK         |
-| DELETE | `/api/expenses/{expense_id}`       | Delete expense                        | 200 OK         |
-| POST   | `/api/expenses/bulk-claim`         | Bulk claim toggle                     | 200 OK         |
+| POST   | `/api/expenses`                    | Create expense                        | 
+| GET    | `/api/expenses`                    | List expenses                         | 
+| PUT    | `/api/expenses/{expense_id}`       | Update expense                        | 
+| DELETE | `/api/expenses/{expense_id}`       | Delete expense                        | 
+| POST   | `/api/expenses/bulk-claim`         | Bulk claim toggle                     | 
 
 ### Income
 
-| Method | Endpoint                    | Description                         | Response       |
+| Method | Endpoint                    | Description                       | 
 |  |  | -- | -- |
-| POST   | `/api/income`             | Create income                       | 201 Created    |
-| GET    | `/api/income`             | List income (filterable by project) | 200 OK (array) |
-| PUT    | `/api/income/{income_id}` | Update income                       | 200 OK         |
-| DELETE | `/api/income/{income_id}` | Delete income                       | 200 OK         |
+| POST   | `/api/income`             | Create income                       | 
+| GET    | `/api/income`             | List income (filterable by project) | 
+| PUT    | `/api/income/{income_id}` | Update income                       | 
+| DELETE | `/api/income/{income_id}` | Delete income                       | 
 
 ### PDF Import
 
-| Method | Endpoint                        | Description                         | Response    |
+| Method | Endpoint                        | Description                       | 
 |  | - | -- | -- |
-| POST   | `/api/pdf/upload`             | Upload PDF for async processing     | 200 OK      |
-| GET    | `/api/pdf/status/{upload_id}` | Check job status & retrieve results | 200 OK      |
-| POST   | `/api/pdf/confirm`            | Persist extracted transactions      | 201 Created |
+| POST   | `/api/pdf/upload`             | Upload PDF for async processing     | 
+| GET    | `/api/pdf/status/{upload_id}` | Check job status & retrieve results | 
+| POST   | `/api/pdf/confirm`            | Persist extracted transactions      | 
 
 ### Error Codes
 
-| Code          | Meaning              | Common Causes                                   |
+| Code          | Meaning              | Common Causes                             |
 | - | -- | -- |
 | **400** | Bad Request          | Malformed JSON, missing required fields         |
 | **404** | Not Found            | Resource does not exist                         |
@@ -383,7 +383,7 @@ The application is deployed on Google Compute Engine as a single VM instance.
 
 All configuration constants are centralized in `backend/common_constants.py`. Some of the important ones are mentioned below:
 
-| Constant                           | Default Value               | Purpose                                 |
+| Constant                           | Default Value               | Purpose                                |
 | - |  |  |
 | `OPENAI_MODEL`                   | `gpt-5.4-mini`              | Vision model for transaction extraction |
 | `OPENAI_MAX_OUTPUT_TOKENS`       | 6000                        | Max tokens per OpenAI response          |
@@ -476,4 +476,4 @@ This architecture ensures scalability and flexibility while maintaining accuracy
 
 ### AI Development Assistance
 
-Claude Code with Haiku 4.5 model was extensively used as a coding assistant throughout this project and greatly assisted in generating new functionality and implementation patterns. However, it also required providing detailed, granular instructions and breaking down complex tasks into smaller, manageable segments. Attempting large-scale code generation, especially those that change both backend and frontend, often introduced errors. Manual oversight was critical, as the AI-generated code sometimes required debugging and refinement, especially for edge cases and integration points. Purely relying on the agent without understanding the generated code can create dangerous technical debt that made debugging extremely complex. Additionally, architectural decisions and code organization required human guidance, as the AI defaulted to simpler, less scalable structures that didn't align with production-quality requirements. The most successful approach involved using AI as an accelerated development tool while maintaining human control over system design, code review, and quality assurance processes.
+Claude Code with Haiku 4.5 model was extensively used as a coding assistant throughout this project and greatly assisted in generating new functionality and implementation patterns. However, it also required providing detailed, granular instructions and breaking down complex tasks into smaller, manageable segments. Attempting large-scale code generation, especially those that change both backend and frontend, often introduced errors. Manual oversight was critical, as the AI-generated code sometimes required debugging and refinement, especially for edge cases and integration points. Also, it is important to seoArately look into what tools and APIs should be used, since its better to separate the analysis part from the actual implemetation of the application. Purely relying on the agent without understanding the generated code can create dangerous technical debt that made debugging extremely complex. Additionally, architectural decisions and code organization required human guidance, as the AI defaulted to simpler, less scalable structures that didn't align with production-quality requirements. The most successful approach involved using AI as an accelerated development tool while maintaining human control over system design, code review, and quality assurance processes.
