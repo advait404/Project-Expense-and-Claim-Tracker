@@ -30,19 +30,19 @@ Designed for Malaysian users (MYR denomination), but can be extended to other cu
 
 ## Features
 
-✅ PDF bank statement parsing - Extract transactions automatically from Malaysian bank statements using OpenAI vision models; supports preview + manual confirmation before persisting.
-✅ Two-step ingestion workflow - Upload PDF → automated extraction → preview and edit extracted transactions → confirm before saving to DB.
-✅ Duplicate detection & warnings - PDF hash-based deduplication prevents re-imports and warns users about potential duplicates.
-✅ Project-based organization - Group expenses and income by project, with cascading deletion
-✅ Claim toggle - Mark expenses as claimed or unclaimed; bulk-toggle claim status in list view or individually in detail views.
-✅ Currency conversion support - Stores original amounts, currency, and exchange rates for converted values.
-✅ Expense categorization - Auto-suggest categories from parsed data with manual override available.
-✅ Financial summaries & dashboards - Per-project dashboard (total income, total expenses, net, total claimed, total not claimed) and universal dashboard with totals and breakdowns by category and claim status.
-✅ REST API - CRUD endpoints for Projects, Expenses, Income plus specialized PDF ingestion and aggregation routes for summaries and dashboards that reduce frontend data processing.
-✅ Frontend UI - Responsive React 19 app styled with Tailwind CSS and shadcn/ui components; UI built with Lovable for consistent design system and UX patterns.
-✅ Backend - Python FastAPI service with SQLite storage (modular design, consistent naming, proper status codes and error handling).
-✅ Testing, docs & quality - Backend automated tests, detailed code comments, comprehensive documentation, and adherence to software engineering best practices.
-✅ Privacy & security considerations - Design includes privacy and security measures (data handling and secure storage practices) and clear user warnings where appropriate.
+- ✅ PDF bank statement parsing - Extract transactions automatically from Malaysian bank statements using OpenAI vision models; supports preview + manual confirmation before persisting.
+- ✅ Two-step ingestion workflow - Upload PDF → automated extraction → preview and edit extracted transactions → confirm before saving to DB.
+- ✅ Duplicate detection & warnings - PDF hash-based deduplication prevents re-imports and warns users about potential duplicates.
+- ✅ Project-based organization - Group expenses and income by project, with cascading deletion
+- ✅ Claim toggle - Mark expenses as claimed or unclaimed; bulk-toggle claim status in list view or individually in detail views.
+- ✅ Currency conversion support - Stores original amounts, currency, and exchange rates for converted values.
+- ✅ Expense categorization - Auto-suggest categories from parsed data with manual override available.
+- ✅ Financial summaries & dashboards - Per-project dashboard (total income, total expenses, net, total claimed, total not claimed) and universal dashboard with totals and breakdowns by category and claim status.
+- ✅ REST API - CRUD endpoints for Projects, Expenses, Income plus specialized PDF ingestion and aggregation routes for summaries and dashboards that reduce frontend data processing.
+- ✅ Frontend UI - Responsive React 19 app styled with Tailwind CSS and shadcn/ui components; UI built with Lovable for consistent design system and UX patterns.
+- ✅ Backend - Python FastAPI service with SQLite storage (modular design, consistent naming, proper status codes and error handling).
+- ✅ Testing, docs & quality - Backend automated tests, detailed code comments, comprehensive documentation, and adherence to software engineering best practices.
+- ✅ Privacy & security considerations - Design includes privacy and security measures (data handling and secure storage practices) and clear user warnings where appropriate.
 
 
 
@@ -174,8 +174,6 @@ erDiagram
 
 ### Field Descriptions
 
-- TODO
-
 #### Project
 
 - **Purpose**: Top-level container for expenses and income
@@ -280,7 +278,7 @@ All uploaded and generated files are removed promptly for privacy and best pract
 ### Projects
 
 | Method | Endpoint                               | Description             | 
-|  | -- | - | -- |
+|---|---|---|
 | POST   | `/api/projects`                      | Create a new project      | 
 | GET    | `/api/projects`                      | List all projects         | 
 | GET    | `/api/projects/{project_id}`         | Get project details       | 
@@ -291,7 +289,7 @@ All uploaded and generated files are removed promptly for privacy and best pract
 ### Expenses
 
 | Method | Endpoint                             | Description                         | 
-|  |  | - | -- |
+|---|---|---|
 | POST   | `/api/expenses`                    | Create expense                        | 
 | GET    | `/api/expenses`                    | List expenses                         | 
 | PUT    | `/api/expenses/{expense_id}`       | Update expense                        | 
@@ -301,7 +299,7 @@ All uploaded and generated files are removed promptly for privacy and best pract
 ### Income
 
 | Method | Endpoint                    | Description                       | 
-|  |  | -- | -- |
+|---|---|---|
 | POST   | `/api/income`             | Create income                       | 
 | GET    | `/api/income`             | List income (filterable by project) | 
 | PUT    | `/api/income/{income_id}` | Update income                       | 
@@ -310,7 +308,7 @@ All uploaded and generated files are removed promptly for privacy and best pract
 ### PDF Import
 
 | Method | Endpoint                        | Description                       | 
-|  | - | -- | -- |
+|---|---|---|
 | POST   | `/api/pdf/upload`             | Upload PDF for async processing     | 
 | GET    | `/api/pdf/status/{upload_id}` | Check job status & retrieve results | 
 | POST   | `/api/pdf/confirm`            | Persist extracted transactions      | 
@@ -318,7 +316,7 @@ All uploaded and generated files are removed promptly for privacy and best pract
 ### Error Codes
 
 | Code          | Meaning              | Common Causes                             |
-| - | -- | -- |
+|---|---|---|
 | **400** | Bad Request          | Malformed JSON, missing required fields         |
 | **404** | Not Found            | Resource does not exist                         |
 | **413** | Payload Too Large    | PDF exceeds 50MB limit                          |
@@ -384,7 +382,7 @@ The application is deployed on Google Compute Engine as a single VM instance.
 All configuration constants are centralized in `backend/common_constants.py`. Some of the important ones are mentioned below:
 
 | Constant                           | Default Value               | Purpose                                |
-| - |  |  |
+|---|---|---|
 | `OPENAI_MODEL`                   | `gpt-5.4-mini`              | Vision model for transaction extraction |
 | `OPENAI_MAX_OUTPUT_TOKENS`       | 6000                        | Max tokens per OpenAI response          |
 | `DATABASE_URL`                   | `sqlite:///./projects.db`   | SQLite database file path               |
